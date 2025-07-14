@@ -171,13 +171,14 @@ def infer_type(node):
         return "OTHER"
 
 color_map = {
-    "GENE": "#FF6B6B",
-    "DRUG": "#89CFF0",
-    "TRIAL": "#B0E57C",
-    "SPONSOR": "#FFD700",
-    "BIOMARKER": "#FFA07A",
-    "OTHER": "#D3D3D3"
+    "GENE": "#FF4C4C",      # brighter red
+    "DRUG": "#4FC3F7",      # brighter blue
+    "TRIAL": "#A3E635",     # brighter lime green
+    "SPONSOR": "#FFEA00",   # brighter yellow
+    "BIOMARKER": "#FF8C69", # brighter salmon
+    "OTHER": "#E0E0E0"      # slightly brighter light gray
 }
+
 
 # ----------------------------
 # Draw Network Function

@@ -3,4 +3,8 @@ pandas
 networkx
 pyvis
 requests
+plotly
+scikit-learn
+
+
 

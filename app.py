@@ -193,7 +193,7 @@ def draw_network(df, limit=100):
 
     for node in nodes:
         ntype = infer_type(node)
-        color = color_map.get(ntype, "#D3D3D3")
+        color = color_map.get(ntype, "#E0E0E0")
         tooltip = f"{ntype} Node: {node}"
         net.add_node(str(node), label=str(node), color=color, title=tooltip)
 

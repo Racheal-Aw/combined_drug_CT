@@ -111,7 +111,7 @@ df_feat, model, scaler = load_artifacts(
 
 
 ## ❹  If the choice is a drug row → run prediction
-drug_choices = df_feat["source"] if "source" in df_feat else df_feat["smiles"]
+drug_choices = df_feat["source"] if "source" in df_feat else df_feat["smiles"].unique()
 choice = st.selectbox("Select drug", drug_choices)
 
 # Fetch the row
@@ -130,9 +130,15 @@ else:
     features_scaled = scaler.transform(features)
 
     if st.button("🔮 Predict"):
-        pred = int(model.predict(features_scaled)[0])
-        prob = model.predict_proba(features_scaled)[0][pred]
-        st.success(f"**Prediction:** {pred}  (prob = {prob:.2f})")
+        proba = model.predict_proba(features_scaled)[0]
+        threshold = 0.2  # or use a slider for flexibility
+
+        pred = 1 if proba[1] >= threshold else 0
+        label = "🟢 Active (class 1)" if pred == 1 else "🔴 Inactive (class 0)"
+        confidence = proba[pred]
+
+        st.markdown(f"### **Prediction:** {label}")
+        st.markdown(f"**Confidence:** {confidence:.2%}")
         
 # ----------------------------
 # Sidebar Filters

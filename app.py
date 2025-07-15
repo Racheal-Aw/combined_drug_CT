@@ -116,7 +116,7 @@ choice = st.selectbox("Select drug", drug_choices)
 
 # Fetch the row
 row = df_feat.loc[df_feat["source"] == choice] if "source" in df_feat else \
-      df_feat.loc[df_feat["smiles"] == choice]
+      df_feat.loc[df_feat["smiles"] == choice].unique()
 
 if row.empty:
     st.error("Drug not found!")
